@@ -50,7 +50,7 @@ try:
         print(user.name, ' has  add ', reaction.emoji, ' to ', reaction.message.content, 'TAG : reaction')
 
         await channel.send(
-            "{} has added {} to the message {}".format(user.name, reaction.emoji, reaction.message.content))
+            f"{user.name} has added {reaction.emoji} to the message {reaction.message.content}")
 
 
     @bot.event
@@ -58,8 +58,7 @@ try:
 
         channel = reaction.message.channel
         print(user.name, ' has  removed ', reaction.emoji, ' to ', reaction.message.content, 'TAG : reaction')
-        await channel.send(
-            "{} has removed {} to the message {}".format(user.name, reaction.emoji, reaction.message.content))
+        await channel.send(f"{user.name} has removed {reaction.emoji} to the message {reaction.message.content}")
 
 
     @bot.event
@@ -84,12 +83,11 @@ try:
 
     @bot.event
     async def on_message_delete(message):
-
         author = message.author
         content = message.content
         if message.author != bot.user:
             print(f"{author} Delete the message {content}")
-            await message.channel.send("{} Delete the message {}".format(author, content))
+            # await message.channel.send(f"{author} Delete the message {content}")
 
 
     @bot.event
@@ -103,5 +101,4 @@ try:
 except Exception as Print_Exception:
     print(Print_Exception)
 
-finally:
-    bot.run(TOKEN, bot=True)
+bot.run(TOKEN, bot=True)
