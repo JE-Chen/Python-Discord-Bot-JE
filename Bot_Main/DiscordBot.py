@@ -106,6 +106,8 @@ try:
             return
         if message != None:
             print(datetime.datetime.now(), message.author, ':', message.content, sep=' ')
+            with open('ChatMessage.txt', 'w+',encoding='utf-8') as File:
+                File.write(str(datetime.datetime.now()) + str(message.author) + ':' + str(message.content))
         await bot.process_commands(message)
 
 
